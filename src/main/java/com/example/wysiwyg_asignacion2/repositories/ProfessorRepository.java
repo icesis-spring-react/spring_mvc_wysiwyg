@@ -12,7 +12,7 @@ import java.util.List;
 @Repository
 public class ProfessorRepository {
 
-    private static List<Magazine> magazines = new ArrayList<>();
+    private static ArrayList<Magazine> magazines = new ArrayList<>();
     static {
         Magazine mag1 = new Magazine("NEW YORK MAGAZINE", "10. 0773456058", "IDX");
         Magazine mag2 = new Magazine("ICESI MAGAZINE", "14. 05163416018", "IDX");
@@ -27,7 +27,7 @@ public class ProfessorRepository {
         magazines.add(mag5);
     }
 
-    private static List<Professor> professors = new ArrayList<>();
+    private static ArrayList<Professor> professors = new ArrayList<>();
     static {
         Professor p1 = new Professor("Alberto Gutierrez", "Doctor en Física de Partículas",
                 "Albert", "Profe1");
@@ -91,5 +91,17 @@ public class ProfessorRepository {
 
     public Professor getProfessor(Professor professor) {
         return validateProfessorExistence(professor);
+    }
+
+    public boolean addArticle(Professor professor, ResearchArticle article) {
+        return professor.addArticle(article);
+    }
+
+    public boolean addProject(Professor professor, TerminalProject project) {
+        return professor.addProject(project);
+    }
+
+    public ArrayList<Magazine> getMagazines() {
+        return magazines;
     }
 }

@@ -35,12 +35,12 @@ public class Professor {
         this.projects = projects;
     }
 
-    public void addArticle(ResearchArticle article) {
-        articles.add(article);
+    public boolean addArticle(ResearchArticle article) {
+        return articles.add(article);
     }
 
-    public void addProject(TerminalProject project) {
-        projects.add(project);
+    public boolean addProject(TerminalProject project) {
+        return projects.add(project);
     }
 
     public String getFullName() {

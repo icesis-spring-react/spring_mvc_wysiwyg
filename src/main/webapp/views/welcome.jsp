@@ -1,4 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="d" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="tag" uri="http://www.springframework.org/tags/form" %>
 
 <%--
   Created by IntelliJ IDEA.
@@ -49,7 +51,11 @@
         </tbody>
     </table>
 
-    <br>
+    <d:form action="showAddArticle" method="post" modelAttribute="professor">
+        <tag:button> Agregar artículo </tag:button>
+    </d:form>
+
+    <br><br>
 
     <h3>Proyectos terminales:</h3>
     <table class="projects-table">
@@ -70,6 +76,10 @@
         </c:forEach>
         </tbody>
     </table>
+
+    <d:form action="showAddProject" method="get">
+        <tag:button> Agregar proyecto </tag:button>
+    </d:form>
 
 </body>
 </html>
