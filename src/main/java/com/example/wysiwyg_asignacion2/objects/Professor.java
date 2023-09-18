@@ -8,7 +8,7 @@ import java.util.List;
 @Component
 public class Professor {
 
-    private String name;
+    private String fullName;
     private String academicGrade;
     private String username;
     private String password;
@@ -19,11 +19,44 @@ public class Professor {
     public Professor() {
     }
 
-    public Professor(String name, String academicGrade, String username, String password) {
-        this.name = name;
+    public Professor(String fullName, String academicGrade, String username, String password) {
+        this.fullName = fullName;
         this.academicGrade = academicGrade;
         this.username = username;
         this.password = password;
+    }
+
+    public Professor(String fullName, String academicGrade, String username, String password, List<ResearchArticle> articles, List<TerminalProject> projects) {
+        this.fullName = fullName;
+        this.academicGrade = academicGrade;
+        this.username = username;
+        this.password = password;
+        this.articles = articles;
+        this.projects = projects;
+    }
+
+    public void addArticle(ResearchArticle article) {
+        articles.add(article);
+    }
+
+    public void addProject(TerminalProject project) {
+        projects.add(project);
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public String getAcademicGrade() {
+        return academicGrade;
+    }
+
+    public void setAcademicGrade(String academicGrade) {
+        this.academicGrade = academicGrade;
     }
 
     public String getUsername() {
@@ -40,22 +73,6 @@ public class Professor {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getAcademicGrade() {
-        return academicGrade;
-    }
-
-    public void setAcademicGrade(String academicGrade) {
-        this.academicGrade = academicGrade;
     }
 
     public List<ResearchArticle> getArticles() {

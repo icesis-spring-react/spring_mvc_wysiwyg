@@ -18,8 +18,8 @@
 <h1> Login para Profesores </h1>
 
     <c:form action="loginProfessor" method="post" modelAttribute="professorForm">
-        Nombre de usuario: <tag:input path="username" /><br>
-        Contraseña: <tag:password path="password" /><br>
+        Nombre de usuario: <tag:input path="username" /><br><br>
+        Contraseña: <tag:password path="password" /><br><br>
         <tag:button>Login</tag:button>
 
     </c:form>

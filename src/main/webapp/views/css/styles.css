@@ -1,0 +1,25 @@
+/* Estilo para la tabla de artículos */
+.articles-table {
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid #0014ff;
+}
+
+.articles-table th, .articles-table td {
+    border: 1px solid #0014ff;
+    padding: 8px;
+    text-align: center;
+}
+
+/* Estilo para la tabla de proyectos */
+.projects-table {
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid #0014ff;
+}
+
+.projects-table th, .projects-table td {
+    border: 1px solid #0014ff;
+    padding: 8px;
+    text-align: center;
+}

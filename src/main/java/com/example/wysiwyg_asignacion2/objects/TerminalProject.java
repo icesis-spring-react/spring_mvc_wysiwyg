@@ -3,15 +3,15 @@ package com.example.wysiwyg_asignacion2.objects;
 public class TerminalProject {
 
     private String title;
-    private String studensQuantity;
+    private int studentsQuantity;
     private String state;
 
     public TerminalProject() {
     }
 
-    public TerminalProject(String title, String studensQuantity, String state) {
+    public TerminalProject(String title, int studentsQuantity, String state) {
         this.title = title;
-        this.studensQuantity = studensQuantity;
+        this.studentsQuantity = studentsQuantity;
         this.state = state;
     }
 
@@ -23,12 +23,12 @@ public class TerminalProject {
         this.title = title;
     }
 
-    public String getStudensQuantity() {
-        return studensQuantity;
+    public int getStudentsQuantity() {
+        return studentsQuantity;
     }
 
-    public void setStudensQuantity(String studensQuantity) {
-        this.studensQuantity = studensQuantity;
+    public void setStudentsQuantity(int studentsQuantity) {
+        this.studentsQuantity = studentsQuantity;
     }
 
     public String getState() {

@@ -33,7 +33,13 @@ public class ProfessorController {
         boolean loginResult = services.loginProfessor(professor);
 
         if (loginResult) {
-            return new ModelAndView("loginOk");
+            ModelAndView model = new ModelAndView("welcome");
+
+            professor = services.getProfessor(professor);
+
+            model.addObject("professor", professor);
+
+            return model;
         }
 
         return new ModelAndView("redirect:/profLogin");

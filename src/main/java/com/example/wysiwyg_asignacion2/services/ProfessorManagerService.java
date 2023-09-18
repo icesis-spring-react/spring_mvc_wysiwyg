@@ -16,4 +16,8 @@ public class ProfessorManagerService {
     public boolean loginProfessor(Professor professor) {
         return professorRepo.professorLogin(professor);
     }
+
+    public Professor getProfessor(Professor professor) {
+        return professorRepo.getProfessor(professor);
+    }
 }
