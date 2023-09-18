@@ -39,4 +39,5 @@ public class ProfessorManagerService {
         return professorRepo.getMagazines();
     }
 
+    public boolean addMagazine(Magazine magazine) { return professorRepo.addMagazine(magazine); }
 }

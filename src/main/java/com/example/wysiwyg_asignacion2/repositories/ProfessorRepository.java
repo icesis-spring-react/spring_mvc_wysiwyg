@@ -104,4 +104,8 @@ public class ProfessorRepository {
     public ArrayList<Magazine> getMagazines() {
         return magazines;
     }
+
+    public boolean addMagazine(Magazine magazine) {
+        return magazines.add(magazine);
+    }
 }

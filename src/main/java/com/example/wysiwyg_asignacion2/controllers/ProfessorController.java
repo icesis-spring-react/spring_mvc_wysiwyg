@@ -66,13 +66,44 @@ public class ProfessorController {
     }
 
     @RequestMapping(value = "/addArticle")
-    public ModelAndView addArticle(@ModelAttribute("articleForm") ResearchArticle article/*,
-                                   @ModelAttribute("professor") Professor professor*/) {
+    public ModelAndView addArticle(@ModelAttribute("articleForm") ResearchArticle article,
+                                   @ModelAttribute("professor") Professor professor) {
         ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
         services = (ProfessorManagerService) ctx.getBean("professorServices");
 
-//        boolean addResult = services.addArticle(professor, article);
+        services.addArticle(professor, article);
+
+        System.out.println("Datos del artículo:" +
+                "\nTítulo: " + article.getTitle() +
+                "\nRevvista: " + article.getMagazine().getTitle() +
+                "\nEstado: " + article.getState());
 
         return new ModelAndView("redirect:/showAddArticle");
+    }
+
+    @RequestMapping(value = "/showAddMagazine")
+    public ModelAndView showAddMagazine(@ModelAttribute("articleForm") ResearchArticle article) {
+        Magazine magazine = new Magazine();
+
+        ModelAndView model = new ModelAndView("add-magazine");
+        model.addObject("magazineForm", magazine);
+        model.addObject("articleForm", article);
+
+        return model;
+    }
+
+    @RequestMapping(value = "/addMagazine")
+    public ModelAndView addMagazine(@ModelAttribute("magazineForm") Magazine magazine) {
+        ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
+        services = (ProfessorManagerService) ctx.getBean("professorServices");
+
+        services.addMagazine(magazine);
+
+        System.out.println("Datos del artículo:" +
+                "\nTítulo: " + magazine.getTitle() +
+                "\nISBN: " + magazine.getIsbn() +
+                "\nTipo: " + magazine.getType());
+
+        return new ModelAndView("redirect:/showAddMagazine");
     }
 }

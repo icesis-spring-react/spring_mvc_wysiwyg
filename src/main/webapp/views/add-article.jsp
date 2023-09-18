@@ -50,5 +50,9 @@
 <%--        <tag:input type="hidden" path=""></tag:input>--%>
         <tag:button> Registrar </tag:button>
     </c:form>
+
+    <c:form action="showAddMagazine" method="post" modelAttribute="articleForm">
+        <c:button> Agregar revista </c:button>
+    </c:form>
 </body>
 </html>
