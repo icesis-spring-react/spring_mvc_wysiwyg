@@ -4,6 +4,7 @@ import com.example.wysiwyg_asignacion2.AppConfig;
 import com.example.wysiwyg_asignacion2.objects.Magazine;
 import com.example.wysiwyg_asignacion2.objects.Professor;
 import com.example.wysiwyg_asignacion2.objects.ResearchArticle;
+import com.example.wysiwyg_asignacion2.objects.TerminalProject;
 import com.example.wysiwyg_asignacion2.services.ProfessorManagerService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -66,16 +67,16 @@ public class ProfessorController {
     }
 
     @RequestMapping(value = "/addArticle")
-    public ModelAndView addArticle(@ModelAttribute("articleForm") ResearchArticle article,
-                                   @ModelAttribute("professor") Professor professor) {
+    public ModelAndView addArticle(@ModelAttribute("articleForm") ResearchArticle article/*,
+                                   @ModelAttribute("professor") Professor professor*/) {
         ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
         services = (ProfessorManagerService) ctx.getBean("professorServices");
 
-        services.addArticle(professor, article);
+//        services.addArticle(professor, article);
 
         System.out.println("Datos del artículo:" +
                 "\nTítulo: " + article.getTitle() +
-                "\nRevvista: " + article.getMagazine().getTitle() +
+//                "\nRevvista: " + article.getMagazine().getTitle() +
                 "\nEstado: " + article.getState());
 
         return new ModelAndView("redirect:/showAddArticle");
@@ -99,11 +100,38 @@ public class ProfessorController {
 
         services.addMagazine(magazine);
 
-        System.out.println("Datos del artículo:" +
+        System.out.println("Datos de la revista:" +
                 "\nTítulo: " + magazine.getTitle() +
                 "\nISBN: " + magazine.getIsbn() +
                 "\nTipo: " + magazine.getType());
 
         return new ModelAndView("redirect:/showAddMagazine");
+    }
+
+    @RequestMapping(value = "/showAddProject")
+    public ModelAndView showAddProject(@ModelAttribute("professor") Professor professor) {
+        TerminalProject project = new TerminalProject();
+
+        ModelAndView model = new ModelAndView("add-project");
+        model.addObject("professorForm", professor);
+        model.addObject("projectForm", project);
+
+        return model;
+    }
+
+    @RequestMapping(value = "/addProject")
+    public ModelAndView showAddProject(@ModelAttribute("projectForm") TerminalProject project,
+                                       @ModelAttribute("professorForm") Professor professor) {
+        ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
+        services = (ProfessorManagerService) ctx.getBean("professorServices");
+
+        services.addProject(professor, project);
+
+        System.out.println("Datos del Proyecto:" +
+                "\nTítulo: " + project.getTitle() +
+                "\nEstudiantes: " + project.getStudentsQuantity() +
+                "\nEstado: " + project.getState());
+
+        return new ModelAndView("redirect:/showAddProject");
     }
 }

@@ -31,7 +31,7 @@ public class ProfessorManagerService {
         return professorRepo.addArticle(professor, article);
     }
 
-    public boolean addArticle(Professor professor, TerminalProject project) {
+    public boolean addProject(Professor professor, TerminalProject project) {
         return professorRepo.addProject(professor, project);
     }
 

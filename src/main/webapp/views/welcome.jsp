@@ -79,8 +79,10 @@
         </tbody>
     </table>
 
-    <d:form action="showAddMagazine" method="post" modelAttribute="professor">
-        <tag:button> Agregar revista </tag:button>
+    <br>
+
+    <d:form action="showAddProject" method="post" modelAttribute="professor">
+        <tag:button> Agregar proyecto </tag:button>
     </d:form>
 
 </body>
