@@ -5,6 +5,7 @@ public class TerminalProject {
     private String title;
     private int studentsQuantity;
     private String state;
+    private Professor professor;
 
     public TerminalProject() {
     }
@@ -37,5 +38,13 @@ public class TerminalProject {
 
     public void setState(String state) {
         this.state = state;
+    }
+
+    public Professor getProfessor() {
+        return professor;
+    }
+
+    public void setProfessor(Professor professor) {
+        this.professor = professor;
     }
 }

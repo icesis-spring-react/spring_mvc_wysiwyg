@@ -53,9 +53,11 @@
 
     <br>
 
-    <d:form action="showAddArticle" method="post" modelAttribute="professor">
-        <tag:button> Agregar artículo </tag:button>
+    <d:form modelAttribute="professor" method="post" action="showAddArticle">
+        <d:hidden path="fullName" />
+        <button type="submit"> Agregar artículo </button>
     </d:form>
+
 
     <br><br>
 

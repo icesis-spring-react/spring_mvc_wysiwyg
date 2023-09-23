@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 @Controller
 public class ProfessorController {
@@ -56,6 +57,9 @@ public class ProfessorController {
     public ModelAndView showAddArticle(@ModelAttribute("professor") Professor professor) {
         ResearchArticle article = new ResearchArticle();
 
+        Professor finalProfessor = professor;
+        professor = services.getProfessors().stream().filter(prof -> Objects.equals(prof.getFullName(), finalProfessor.getFullName())).findFirst().orElse(null);
+
         ArrayList<Magazine> magazines = services.getMagazines();
 
         ModelAndView model = new ModelAndView("add-article");
@@ -69,14 +73,20 @@ public class ProfessorController {
     @RequestMapping(value = "/addArticle")
     public ModelAndView addArticle(@ModelAttribute("articleForm") ResearchArticle article/*,
                                    @ModelAttribute("professor") Professor professor*/) {
+
         ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
         services = (ProfessorManagerService) ctx.getBean("professorServices");
 
-//        services.addArticle(professor, article);
+        Magazine magazine = services.getMagazines().stream().filter(mag -> Objects.equals(mag.getIsbn(), article.getMagazine().getIsbn())).findFirst().orElse(null);
+        article.setMagazine(magazine);
+
+        Professor professor = services.getProfessors().stream().filter(prof -> Objects.equals(prof.getFullName(), article.getAuthor().getFullName())).findFirst().orElse(null);
+
+        services.addArticle(professor, article);
 
         System.out.println("Datos del artículo:" +
                 "\nTítulo: " + article.getTitle() +
-//                "\nRevvista: " + article.getMagazine().getTitle() +
+                "\nRevista: " + article.getMagazine().getTitle() +
                 "\nEstado: " + article.getState());
 
         return new ModelAndView("redirect:/showAddArticle");

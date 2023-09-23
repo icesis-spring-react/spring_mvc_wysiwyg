@@ -39,5 +39,9 @@ public class ProfessorManagerService {
         return professorRepo.getMagazines();
     }
 
+    public ArrayList<Professor> getProfessors() {
+        return professorRepo.getProfessors();
+    }
+
     public boolean addMagazine(Magazine magazine) { return professorRepo.addMagazine(magazine); }
 }

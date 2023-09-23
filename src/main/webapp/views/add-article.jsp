@@ -28,17 +28,11 @@
         <br><br>
 
         <label> Revista: </label> <br>
-<%--        <spring:bind path="magazine">--%>
-<%--            <tag:select id="magazineSelect" path="magazine" class="form-control">--%>
-<%--                <option value=""> Selecciona una revista </option>--%>
-<%--                <d:forEach items="${magazines}" var="magazine">--%>
-<%--                    <option value="${magazine}"> ${magazine.title} </option>--%>
-<%--                </d:forEach>--%>
-<%--            </tag:select>--%>
-<%--        </spring:bind>--%>
-
-        <tag:select path="magazine">
-            <tag:options items="${magazines}" itemValue="isbn" itemLabel="title"/>
+        <tag:select id="magazineSelect" path="magazine.isbn" class="form-control">
+            <option value=""> Selecciona una revista </option>
+            <d:forEach items="${magazines}" var="magazine">
+                <option value="${magazine.isbn}"> ${magazine.title} </option>
+            </d:forEach>
         </tag:select>
 
         <br><br>
@@ -50,8 +44,11 @@
 
         <br><br>
 
-<%--        <tag:input type="hidden" name="professor" value="${professor}" />--%>
-<%--        <tag:input type="hidden" path=""></tag:input>--%>
+        <tag:input type="hidden" value="${professorForm.fullName}" path="author.fullName"/>
+
+<%--        <input type="hidden" value="${professorForm.fullName}" name="professorForm.fullName" />--%>
+
+
         <tag:button> Registrar </tag:button>
     </c:form>
 

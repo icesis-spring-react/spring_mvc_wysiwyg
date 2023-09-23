@@ -5,6 +5,7 @@ public class ResearchArticle {
     private String title;
     private String state;
     private Magazine magazine;
+    private Professor author;
 
     public ResearchArticle() {
     }
@@ -37,5 +38,13 @@ public class ResearchArticle {
 
     public void setMagazine(Magazine magazine) {
         this.magazine = magazine;
+    }
+
+    public Professor getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(Professor author) {
+        this.author = author;
     }
 }

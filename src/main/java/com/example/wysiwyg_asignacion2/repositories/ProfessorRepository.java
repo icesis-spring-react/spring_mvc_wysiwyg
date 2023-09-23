@@ -105,7 +105,12 @@ public class ProfessorRepository {
         return magazines;
     }
 
+    public ArrayList<Professor> getProfessors() {
+        return professors;
+    }
+
     public boolean addMagazine(Magazine magazine) {
         return magazines.add(magazine);
     }
+
 }

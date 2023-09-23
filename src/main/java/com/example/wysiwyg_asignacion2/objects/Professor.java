@@ -36,10 +36,12 @@ public class Professor {
     }
 
     public boolean addArticle(ResearchArticle article) {
+        article.setAuthor(this);
         return articles.add(article);
     }
 
     public boolean addProject(TerminalProject project) {
+        project.setProfessor(this);
         return projects.add(project);
     }
 
